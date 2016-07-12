@@ -1,0 +1,230 @@
+body{
+  background-color: rgba(241, 241, 241, 1);
+  padding-top: 47px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.hero-sign_up {
+  margin-top: 20%;
+  margin-left: 20%;
+  text-align: right;
+}
+
+.bg-gradient {
+  background: linear-gradient(to bottom, #020111 60%,#20202c 100%);
+}
+
+.bg-cartoon {
+  background: #fff url(<%= asset_path 'cartoon_girl.jpg' %>);
+  background-position: bottom right;
+  background-size: cover;
+}
+.footer {
+  background: #fff url(<%= asset_path 'cartoon_girl.jpg' %>);
+  background-position: top left;
+  background-size: cover;
+}
+.bg-blue {
+  background: rgba(5, 78, 133, .9);
+}
+
+.bg-white {
+  background: rgba(255, 255, 255, 1);
+}
+/* na links */
+.navbar-brand.text-white , ul.nav li a, ul.nav li a:visited {
+    color: #fff;
+}
+
+ul.nav li a:hover, ul.nav li a:active {
+    color: gray;
+}
+
+ul.nav li.active a {
+    color: #fff;
+}
+
+.navbar-toggle {
+  background: white;
+}
+
+.navbar {
+  border: 0;
+}
+/* Fonts */
+.font-1 {
+    font-family: 'Alegreya', serif;
+    font-weight: 700;
+    }
+
+.font-2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    }
+.font-3 {
+    font-family: 'Roboto', sans-serif;
+    }
+
+.font-white {
+  color: white;
+}
+/* buttons */
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+.btn.sharp {
+  border-radius:0;
+}
+
+.btn.outline {
+	background: none;
+	padding: 12px 22px;
+}
+
+.btn.outline-white {
+	background: none;
+	padding: 12px 22px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn.outline-white:hover, .btn.outline-white:focus, .btn.outline-white:active {
+    background: #fff;
+    color: rgba(5, 78, 133, 1);
+}
+
+.btn.outline-white:active, .btn.outline-white.active {
+    background: #fff;
+    box-shadow: none;
+}
+.btn-primary.outline {
+	border: 2px solid #0099cc;
+	color: #0099cc;
+}
+
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+  background: rgba(40, 165, 230, 1);
+  color: #fff;
+	border-color: #33a6cc;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+	border-color: #007299;
+	color: #007299;
+	box-shadow: none;
+}
+
+.btn-lg.round.clear {
+  background: rgba(255,255,255, .1);
+  border-color: white;
+	border-radius: 24px;
+  color: white;
+  line-height: 6px;
+  font-size: 12px;
+}
+
+.btn-lg.round.clear:hover {
+  background: rgba(255,255,255, 1);
+	border-radius: 24px;
+  color: rgba(40, 165, 230, 1);
+  line-height: 6px;
+  font-size: 12px;
+}
+
+.btn-lg.round.white {
+  background: rgba(255,255,255, 1);
+  border-color: white;
+	border-radius: 24px;
+  color: rgba(40, 165, 230, 1);
+  line-height: 6px;
+  font-size: 12px;
+}
+
+.btn-lg.round.white:hover {
+  background: rgba(255,255,255, .4);
+	border-radius: 24px;
+  color: white;
+  line-height: 6px;
+  font-size: 12px;
+}
+
+.btn-login {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* Panels */
+.panel{
+  /*padding: 5px 20px;*/
+}
+.panel-gray {
+  background: rgba(241, 241, 241, 1);
+}
+
+/* User Icon */
+.circle-user {
+    background: rgba(255, 255, 255, .5);
+    padding: 10px;
+    border-radius: 100%;
+    color: white;
+}
+
+/* Forms */
+.form {
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.text.field input {
+  margin-top: 5px;
+  text-align: center;
+  padding-left: 10px;
+  height: 34px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+select {
+  padding-left: 10px;
+  margin-bottom: 10px;
+  height: 34px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+
+hr {
+   color: #d2c2d1;
+   background: #d1d2d2;
+   width: 100%;
+   height: 1px;
+}

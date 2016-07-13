@@ -1,27 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Discussions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @discussions.each do |discussion| %>
-      <tr>
-        <td><%= discussion.question %></td>
-        <td><%= link_to 'Show', discussion %></td>
-        <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-        <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Discussion', new_discussion_path %>
+<div class="container">
+  <div class="row" style="padding:20px;">
+    <div class="col-md-4 pull-right">
+        <div class="panel">
+            <div class="panel-heading bg-blue font-white">
+              <h4>Your Question</h4>
+            </div>
+            <div class="panel-body truncate">
+                <% if current_user.discussions.count > 0 %>
+                  <%  current_user.discussions.each do |discussion| %>
+                    <%= link_to discussion.question, discussion %>
+                    <% if discussion.comments.count > 0 %>
+                      <%= discussion.comments.count %> Answers.
+                    <% end %>
+                      <br>
+                  <% end %>
+                <% else %>
+                  You have no questions.
+                  <br>
+                <% end %>
+            </div>
+            <div class="panel-footer">
+              <%= link_to 'New Discussion', new_discussion_path %>
+            </div>
+        </div>
+    </div>
+<% @discussions.each do |discussion| %>
+    <div class="col-md-8">
+        <div class="panel">
+            <div class="panel-body">
+                <%= link_to discussion.question, discussion %>
+                <hr>
+                <%= link_to 'Edit', edit_discussion_path(discussion) %>
+                <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>

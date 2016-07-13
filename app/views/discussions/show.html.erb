@@ -1,9 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row" style="padding:20px;">
+    <div class="col-md-4 pull-right">
+        <div class="panel">
+            <div class="panel-heading bg-blue font-white">
+              <h4>Your Question</h4>
+            </div>
+            <div class="panel-body truncate">
+                <% if current_user.discussions.count > 0 %>
+                  <%  current_user.discussions.each do |discussion| %>
+                    <%= link_to discussion.question, discussion %>
+                    <% if discussion.comments.count > 0 %>
+                      <%= discussion.comments.count %> Answers.
+                    <% end %>
+                      <br>
+                  <% end %>
+                <% else %>
+                  You have no questions.
+                  <br>
+                <% end %>
+            </div>
+            <div class="panel-footer">
+              <%= link_to 'New Discussion', new_discussion_path %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="panel">
+            <div class="panel-body">
+              <p>
+                <strong>Question:</strong>
+                <%= @discussion.question %>
+              </p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @discussion.question %>
-</p>
-
-<%= link_to 'Edit', edit_discussion_path(@discussion) %> |
-<%= link_to 'Back', discussions_path %>
+              <%= link_to 'Edit', edit_discussion_path(@discussion) %> |
+              <%= link_to 'Back', discussions_path %>
+        </div>
+    </div>
+</div>

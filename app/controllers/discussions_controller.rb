@@ -1,4 +1,5 @@
 class DiscussionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
 
   # GET /discussions
@@ -24,7 +25,8 @@ class DiscussionsController < ApplicationController
   # POST /discussions
   # POST /discussions.json
   def create
-    @discussion = Discussion.new(discussion_params)
+    @user = User.find(current_user.id)
+    @discussion = @user.discussions.build(discussion_params)
 
     respond_to do |format|
       if @discussion.save

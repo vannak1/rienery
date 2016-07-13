@@ -1,24 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset2">
-      <p>
-        <strong>Title:</strong>
-        <%= @course.title %>
-      </p>
+<div class="row" style="padding:20px;">
+    <div class="col-md-8">
+        <div class="panel fifty">
+            <div class="panel-body">
+                <p>
+                  <strong>Title:</strong>
+                  <%= @course.title %>
+                </p>
 
-      <p>
-        <strong>Description:</strong>
-        <%= @course.description %>
-      </p>
+                <p>
+                  <strong>Description:</strong>
+                  <%= @course.description %>
+                </p>
 
-      <p>
-        <strong>lessons:</strong>
-        <% @course.lessons.each do |lesson| %>
-           <%= lesson.title %>
-        <% end %>
-      </p>
-      <%= link_to 'Edit', edit_course_path(@course) %> |
-      <%= link_to 'Back', courses_path %>
-   </div>
-  </div>
+                <p>
+                  <strong>lessons:</strong>
+                  <% @course.lessons.each do |lesson| %>
+                     <%= lesson.title %>
+                  <% end %>
+                </p>
+                <%= link_to 'Edit', edit_course_path(@course) %> |
+                <%= link_to 'Back', courses_path %>
+              </li>
+            <br>
+
+            <%= link_to 'New Lesson', new_course_lesson_path(@course) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading bg-blue font-white">
+              <h4>Courses</h4>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+    </div>
 </div>

@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :discussions
   resources :courses do
     resources :lessons
-    resources :enrollments
   end
+  resources :enrollments, only: [:create, :destroy]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
 

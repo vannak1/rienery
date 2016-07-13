@@ -29,10 +29,8 @@ class DiscussionsController < ApplicationController
     respond_to do |format|
       if @discussion.save
         format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
-        format.json { render :show, status: :created, location: @discussion }
       else
         format.html { render :new }
-        format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class DiscussionsController < ApplicationController
     respond_to do |format|
       if @discussion.update(discussion_params)
         format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @discussion }
       else
         format.html { render :edit }
-        format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class DiscussionsController < ApplicationController
     @discussion.destroy
     respond_to do |format|
       format.html { redirect_to discussions_url, notice: 'Discussion was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -1,4 +1,4 @@
-<%= form_for(@lesson, @course) do |f| %>
+<%= form_for([@course, @lesson]) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -23,10 +23,8 @@
     <%= f.label :locked? %><br>
     <%= f.check_box :locked? %>
   </div>
-  <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
-  </div>
+
+  <%= collection_select(:lesson, :course_id, Course.all, :id, :title) %>
   <div class="actions">
     <%= f.submit %>
   </div>

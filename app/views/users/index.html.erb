@@ -1,4 +1,5 @@
-
-<% @users.each do |user| %>
-<%= user.name %>
-<% end %>
+<ul class="list-group">
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>

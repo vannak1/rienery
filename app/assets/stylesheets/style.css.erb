@@ -1,12 +1,11 @@
 body{
   background-color: rgba(241, 241, 241, 1);
-  padding-top: 47px;
+  padding: 45px 0 0 0;
   font-family: 'Roboto', sans-serif;
 }
 
 .hero-sign_up {
-  margin-top: 20%;
-  margin-left: 20%;
+  margin-top: 15%;
   text-align: right;
 }
 
@@ -16,13 +15,12 @@ body{
 
 .bg-cartoon {
   background: #fff url(<%= asset_path 'cartoon_girl.jpg' %>);
-  background-position: bottom right;
-  background-size: cover;
-}
-.footer {
-  background: #fff url(<%= asset_path 'cartoon_girl.jpg' %>);
   background-position: top left;
   background-size: cover;
+}
+
+.footer {
+  background: rgba(5, 78, 133, 1);
 }
 .bg-blue {
   background: rgba(5, 78, 133, .9);
@@ -50,6 +48,7 @@ ul.nav li.active a {
 
 .navbar {
   border: 0;
+  margin-bottom: 10px;
 }
 /* Fonts */
 .font-1 {
@@ -120,6 +119,24 @@ ul.nav li.active a {
 .btn.outline-white:active, .btn.outline-white.active {
     background: #fff;
     box-shadow: none;
+}
+
+.btn.outline-white-inverted {
+	background: #fff;
+	padding: 12px 22px;
+  border: 2px solid #fff;
+  color: rgba(5, 78, 133, 1);
+
+}
+
+.btn.outline-white-inverted:hover, .btn.outline-white:focus, .btn.outline-white:active {
+    background:none;
+    color: #fff;
+}
+
+.btn.outline-white-inverted:active, .btn.outline-white.active {
+    box-shadow: none;
+    color: #fff;
 }
 .btn-primary.outline {
 	border: 2px solid #0099cc;

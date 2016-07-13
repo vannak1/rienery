@@ -16,14 +16,16 @@
 //= require_tree .
 
 var height = window.innerHeight;
+
+
 $(document).ready(function(){
-  $('.hero').height(height * .90);
-  $('.fifty').height(height * .5);
   $('ul.nav li.dropdown').hover(function() {
     $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
   }, function() {
     $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(500);
   });
+  $('.hero').height(height * .90);
+  $('.fifty').height(height * .5);
   // testing modal
     $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').focus()

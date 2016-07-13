@@ -17,9 +17,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if user_signed_in? %>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
-        <li><a href="#">Activity</a></li>
-        <li><a href="#">Discussion</a></li>
+        <li><%= link_to "Home", user_path(current_user) %></li>
+        <li><%= link_to "Discussion", discussions_path %></li>
       </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">

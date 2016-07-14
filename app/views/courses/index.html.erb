@@ -1,31 +1,41 @@
 <div class="container">
-<div class="row" style="padding:20px;">
-    <div class="col-md-8">
-        <div class="panel fifty">
+    <div class="row" style="padding:20px;">
+        <div class="col-md-8">
+        <% @courses.each do |course| %>
+            <div class="panel">
+                <div class="panel-body">
+                    <%= course.title %>
+                    <%= course.description %>
+                    <%= link_to 'Show', course %>
+                    <%= link_to 'Edit', edit_course_path(course) %>
+                    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'} %>
+                  
+                </div>
+            </div>
+        <% end %>
+        <%= link_to 'New Course', new_course_path %>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="panel-group" id="accordion">
+    <% @courses.each do |course| %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <p data-toggle="collapse" data-parent="#accordion"><%= course.title %></a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body">
-              <li class="list-group-item">
-                <%= course.title %>
                 <%= course.description %>
                 <%= link_to 'Show', course %>
                 <%= link_to 'Edit', edit_course_path(course) %>
-                <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </li>
-            <% end %>
-            <br>
-
-            <%= link_to 'New Course', new_course_path %>
+                <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'} %>
             </div>
+          </div>
         </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading bg-blue font-white">
-              <h4>Courses</h4>
-            </div>
-            <div class="panel-body">
-
-            </div>
-        </div>
-    </div>
+    <% end %>
+  </div>
 </div>

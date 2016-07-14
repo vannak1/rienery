@@ -31,9 +31,29 @@
                 <strong>Question:</strong>
                 <%= @discussion.question %>
               </p>
-
+              <p>
+                <b>Tags:</b>
+                <%= join_tags(@discussion) %>
+              </p>
+              <% if policy(@discussion).update? %>
               <%= link_to 'Edit', edit_discussion_path(@discussion) %> |
+              <% end %>
               <%= link_to 'Back', discussions_path %>
         </div>
     </div>
+    <div class="col-md-8">
+        <div class="panel">
+            <div class="panel-body">
+              <h2>Add a comment:</h2>
+              <%= render "comments/form" %>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    <div class="panel">
+        <div class="panel-body">
+          <h2>Comments</h2>
+          <%= render @discussion.comments %>
+    </div>
+  </div>
 </div>

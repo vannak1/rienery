@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :votes
-  resources :comments
-  resources :discussions
+
+  resources :discussions do
+    resource :comments
+    resources :votes
+  end
+  resource :comments, only: [:create, :destroy]
+  
   resources :courses do
     resources :lessons
   end
@@ -43,8 +47,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

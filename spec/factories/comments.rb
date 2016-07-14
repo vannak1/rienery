@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    content "MyText"
-    user nil
+    commenter "MyString"
+    body "MyText"
     discussion nil
   end
 end

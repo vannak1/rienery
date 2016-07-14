@@ -27,7 +27,7 @@ class DiscussionsController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @discussion = @user.discussions.build(discussion_params)
-
+    authorize(@discussion)
     respond_to do |format|
       if @discussion.save
         format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
@@ -40,6 +40,7 @@ class DiscussionsController < ApplicationController
   # PATCH/PUT /discussions/1
   # PATCH/PUT /discussions/1.json
   def update
+    authorize(@discussion)
     respond_to do |format|
       if @discussion.update(discussion_params)
         format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }

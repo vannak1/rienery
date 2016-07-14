@@ -10,7 +10,9 @@
                  <% else %>
                    <% @user.courses.each do |course| %>
                      <%= link_to course.title, course_path(course) %><br>
+                     <% if current_user.admin? %>
                      <%= link_to 'Delete', enrollment_path(course_id: course), method: :delete %>
+                     <% end %>
                      <hr>
                   <% end %>
                 <% end %>

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :discussions
   enum role: [:user, :editor, :admin]
   after_initialize :set_default_role, :if => :new_record?
+  validates_presence_of :name, :email, :password
 
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)

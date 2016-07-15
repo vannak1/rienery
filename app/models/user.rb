@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :enrollments
   has_many :courses, through: :enrollments
   has_many :votes
+  has_many :discussions
   enum role: [:user, :editor, :admin]
   after_initialize :set_default_role, :if => :new_record?
 

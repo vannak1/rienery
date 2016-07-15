@@ -19,6 +19,14 @@
         <%= f.label :description %><br>
         <%= f.text_area :description %>
       </div>
+
+       <div class="field">
+        <%= f.fields_for :lesson do |lesson_fields| %>
+            Title: <%= lesson_fields.text_field :title %>
+            Content: <%= lesson_fields.text_field :content %>
+        <% end %>
+      </div>
+
       <div class="actions">
         <%= f.submit %>
       </div>

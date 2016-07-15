@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712014353) do
+ActiveRecord::Schema.define(version: 20160715001326) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20160712014353) do
     t.string   "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,10 +52,10 @@ ActiveRecord::Schema.define(version: 20160712014353) do
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.boolean  "locked?"
+    t.boolean  "locked?",    default: true
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"

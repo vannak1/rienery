@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :votes
-  resources :comments
-  resources :discussions
+  resources :discussions do
+    resources :comments
+  end
   resources :courses do
     resources :lessons
   end

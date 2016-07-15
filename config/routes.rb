@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :votes
+  resources :votes, only: [:create, :destroy]
   resources :discussions do
     resources :comments
   end

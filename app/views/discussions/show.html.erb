@@ -6,7 +6,7 @@
 
     <h3>Comments:</h3>
     <!-- renders the _comment.html.erb partial file. -->
-    <p><%= render @discussion.comments %></p>
+    <p><%= render @discussion.comments.order_by_vote %></p>
 
     <h3>Reply to discussion:</h3>
     <!-- renders the comments form -->

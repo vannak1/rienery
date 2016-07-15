@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20160715031855) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "discussion_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "vote_count"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "vote_count",    default: 0
   end
 
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id"

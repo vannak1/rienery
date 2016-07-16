@@ -13,7 +13,7 @@ course1 = Course.create(title: "Reading 101",
 course2 = Course.create(title: "Reading 102",
               description: "A more advanced course on literacy.",
               )
-lesson1 = course1.lessons.create(title: "Phonics", content: "<iframe width="560" height="315" src="https://www.youtube.com/embed/KThdffor42g" frameborder="0" allowfullscreen></iframe>")
+lesson1 = course1.lessons.create(title: "Phonics", content: "<iframe width='560' height='315' src='https://www.youtube.com/embed/KThdffor42g' frameborder='0' allowfullscreen></iframe>")
 discussion1 = user1.discussions.create(title: "How do I improve my speaking?",
               content: "I don't know where to begin.  Could you suggest resources."
 )

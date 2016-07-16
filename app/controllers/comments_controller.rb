@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   def create
     @comment = @discussion.comments.create(comment_params)
     @comment.votes.create(user_id: current_user.id)
-    @comment.user_id = current_user.id
 
     if @comment.save
       redirect_to discussion_path(@discussion)

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :courses do
-    resources :lessons
+    resources :lessons do
+      member do
+        put :complete
+      end
+    end
   end
   resources :enrollments, only: [:create, :destroy]
 

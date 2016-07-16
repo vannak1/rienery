@@ -6,7 +6,16 @@ class LessonsController < ApplicationController
   def index
     @lessons = @course.lessons
   end
-
+  
+  def complete
+    @lesson = Lesson.find(params[:id])
+    @course = Course.find(params[:course_id])
+    if @lesson.update(completed?: true)
+      redirect_to course_path(@course)
+    else
+      render @lesson
+    end
+  end
   # GET /lessons/1
   # GET /lessons/1.json
   def show
@@ -66,6 +75,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :content, :locked?, :course_id)
+      params.require(:lesson).permit(:title, :content, :completed?, :course_id)
     end
 end

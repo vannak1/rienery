@@ -1,7 +1,11 @@
 class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :users, through: :enrollments
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
+
+  validates_presence_of :title, :description
+  validates :title, length: {minimum: 5}
+  validates :description, length: {minimum: 5}
   
   def lesson
     Lesson.new

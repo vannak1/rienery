@@ -1,20 +1,18 @@
-<div class="comment">
-<button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-  <%= link_to 'Up Vote', votes_path(comment_id: comment), method: :post %>
-</button>
- <%= comment.votes.count %>
-<button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-   <%= link_to 'Down Vote', vote_path(comment_id: comment), method: :delete %>
-</button>
-  <p class="comment-content"><%= comment.content %></p>
-  <p class="comment-posted-by">Posted by <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %> ago</p>
-
-  <div class="links">
-    <% if comment.user_id == current_user.id %>
-      <%= link_to "Edit", edit_discussion_comment_path(comment.discussion, comment) %>
-      <%= link_to "Delete", discussion_comment_path(comment.discussion, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
-  </div>
+<div class="panel panel-default">
+    <div class="panel-body">
+         <button type="button" class="btn btn-primary" aria-label="Left Align">
+           <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+           <%= link_to 'Up Vote', votes_path(comment_id: comment), method: :post, class: "font-white" %>
+           <span class="badge"><%= comment.votes.count %></span>
+        </button>
+         <hr>
+         <p class="comment-content"><%= comment.content %></p>
+         <p class="comment-posted-by">Posted by <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %> ago</p>
+         <% if comment.user_id == current_user.id || current_user.admin? %>
+           <div class="panel-footer">
+             <%= link_to "Edit", edit_discussion_comment_path(comment.discussion, comment) %>
+             <%= link_to "Delete", discussion_comment_path(comment.discussion, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+           </div>
+         <% end %>
+    </div>
 </div>

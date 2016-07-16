@@ -1,26 +1,26 @@
-<div class="col-md-8 col-md-offset-2">
-  <div>
-    <h2><%= @discussion.question %></h2>
-    <p>Posted by <%= @discussion.user.email %> <%= time_ago_in_words(@discussion.created_at) %> ago</p>
-    <!-- Add a Posted By: username at timestamp. -->
+<div class="container">
+  <div class="row" style="padding-bottom: 10px;">
+   <div class="col-md-9 bg-white">
+      <h2 class="font-2"><%= @discussion.title %></h2>
+      <hr>
+      <h4 class='font-3'><%= @discussion.content %></h4>
+      <br>
+      <p>Posted by <%= @discussion.user.email %> <%= time_ago_in_words(@discussion.created_at) %> ago</p>
 
-    <h3>Comments:</h3>
-    <!-- renders the _comment.html.erb partial file. -->
-    <p><%= render @discussion.comments.order_by_vote %></p>
-
-    <h3>Reply to discussion:</h3>
-    <!-- renders the comments form -->
-    <%= render 'comments/form' %>
-
-
-    <!-- Add a conditional so that the 'edit' and 'destroy' links only appear for the user who created the discussion. -->
-    <div class="links btn-group">
-      <%= link_to "Back", root_path, class: "btn btn-default" %>
-      <% if @discussion.user_id == current_user.id %>
-        <%= link_to "Edit", edit_discussion_path(@discussion), class: "btn btn-default" %>
-        <%= link_to "Delete", discussion_path(@discussion), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
-      <% end %>
+      <div class="links btn-group">
+        <%= link_to "Back", root_path, class: "btn btn-default" %>
+        <% if @discussion.user_id == current_user.id || current_user.admin? %>
+          <%= link_to "Edit", edit_discussion_path(@discussion), class: "btn btn-default" %>
+          <%= link_to "Delete", discussion_path(@discussion), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
+        <% end %>
+      </div>
+      <h3>Reply to question:</h3>
+      <!-- renders the comments form -->
+      <%= render 'comments/form' %>
+     </div>
     </div>
-  </div>
+    <hr>
+    <%= render @discussion.comments.order_by_vote %>
 </div>
 
+<!-- renders the _comment.html.erb partial file. -->

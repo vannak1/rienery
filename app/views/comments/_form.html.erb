@@ -1,4 +1,8 @@
+<div style="padding:5px;">
 <%= form_for([@discussion, @discussion.comments.build]) do |f| %>
-  <%= f.text_field :content, label: "Comment" %>
-  <%= f.submit %>
+  <fieldset>
+    <%= f.text_area :content, label: "Comment", class: "form-control" %>
+  </fieldset>
+  <%= f.submit 'Create Comment', class: "btn btn-primary" %>
 <% end %>
+<div>

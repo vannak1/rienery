@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160715031855) do
     t.integer  "discussion_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "vote_count",    default: 0
+    t.integer  "vote_count",    default: 1
   end
 
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id"
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 20160715031855) do
   end
 
   create_table "discussions", force: :cascade do |t|
-    t.string   "question"
+    t.string   "title"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"

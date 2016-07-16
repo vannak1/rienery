@@ -1,27 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Listing Discussions | <%= link_to 'New Discussion', new_discussion_path %></h1>
+</div>
 
-<h1>Listing Discussions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @discussions.each do |discussion| %>
-      <tr>
-        <td><%= discussion.question %></td>
-        <td><%= link_to 'Show', discussion %></td>
-        <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-        <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Discussion', new_discussion_path %>
+<% Discussion.all.each do |discussion| %>
+  <div class="container">
+    <div class="row" style="margin-top: 10px;">
+      <div class="col-md-8 bg-white">
+        <div class="media">
+          <div class="media-left">
+              <%= image_tag("pen") %>
+          </div>
+          <div class="media-body">
+            <h3 class="media-heading font-1"><%= discussion.title %></h3>
+            <%= link_to 'Show', discussion %>
+            <% if discussion.user == current_user || current_user.admin? %>
+              | <%= link_to 'Edit', edit_discussion_path(discussion) %>
+            <% end %>
+            <% if current_user.admin? %>
+              | <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

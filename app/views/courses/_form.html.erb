@@ -11,23 +11,31 @@
         </div>
       <% end %>
 
-      <div class="field">
+      <fieldset class="form-group">
         <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
+        <%= f.text_field :title, class: "field-control" %>
+      </fieldset>
+      <fieldset class="form-group">
         <%= f.label :description %><br>
-        <%= f.text_area :description %>
-      </div>
+        <%= f.text_area :description, class: "field-control" %>
+      </fieldset>
 
-       <div class="field">
+       <fieldset class="form-group">
+        <h4>Lesson</h4>
+        <hr>
         <%= f.fields_for :lesson do |lesson_fields| %>
-            Title: <%= lesson_fields.text_field :title %>
-            Content: <%= lesson_fields.text_field :content %>
+          <fieldset class="form-group">
+            <%= f.label :title %><br>
+            <%= lesson_fields.text_field :title, class: "field-control" %>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= f.label :content %><br>
+            <%= lesson_fields.text_area :content, class: "field-control" %>
+          </fieldset>
         <% end %>
-      </div>
+      </fieldset>
 
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit 'Create Course', class: "btn btn-primary" %>
       </div>
     <% end %>

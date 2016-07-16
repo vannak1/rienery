@@ -1,36 +1,63 @@
+<script>
+  /* script fix turbolinks not resizing main and sidebar */
+  $('.root-main').height($('.root-sidebar').height());
+  $(document).ready(function(){
+    $('.root-main').height($('.root-sidebar').height());
+  });
+</script>
+
 <div class="container">
-<div class="row" style="padding:20px;">
-    <div class="col-md-8">
-        <div class="panel fifty">
-            <div class="panel-body">
+<div class="row">
+    <div class="col-md-8 bg-white root-main">
                  <h4>Welcome</h4>
                  <hr>
                  <% if @user.courses.count == 0 %>
-                   <p>Enroll in some courses.</p>
+                   <h4 class="font-2 alert-info">Enroll in some courses.</h4>
                  <% else %>
-                   <% @user.courses.each do |course| %>
-                     <%= link_to course.title, course_path(course) %><br>
-                     <%= link_to 'Delete', enrollment_path(course_id: course), method: :delete %>
-                     <hr>
-                  <% end %>
+                   <h4 class="font-2 alert-success">Start learning by clicking Start Lesson.</h4>
                 <% end %>
-            </div>
-        </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading bg-blue font-white">
+    <div class="col-md-3 col-md-offset-1 bg-white root-sidebar">
               <h4>Courses</h4>
-            </div>
-            <div class="panel-body">
-               ##refactor to model
+              <ul class="list-group">
                  <% Course.all.each do |course| %>
-                 <h4><%= course.title %></h4>
-                 <%= button_to 'Enroll', enrollments_path(course_id: course) %></p>
-                 <hr>
+                   <li class="list-group-item">
+                     <p class="font-3"><%= course.title %></p>
+                     <%= button_to 'Enroll', enrollments_path(course_id: course) %>
+                   </li>
                  <% end %>
-            </div>
-        </div>
+              </ul>
+      </div>
     </div>
 </div>
+
+<% if @user.courses.count != 0 %>
+  <div class="container">
+    <h1 class="font-1">Your Courses</h1>
+  </div>
+
+  <% @user.courses.each do |course| %>
+    <div class="container">
+      <div class="row" style="margin-top: 10px;">
+        <!-- begin course panels -->
+        <div class="col-md-8 bg-white">
+          <div class="media">
+            <div class="media-left">
+                <%= image_tag("badge") %>
+            </div>
+            <div class="media-body">
+              <h3 class="media-heading font-1"><%= course.title %></h3>
+              <p class="font-3"><%= course.description %><p>
+              <p class="font-2"><%= link_to "Start Lesson", course_path(course) %><p>
+              <% if current_user.admin? %>
+                <%= link_to 'Delete', enrollment_path(course_id: course), method: :delete %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- end course panels -->
+      </div>
+    </div>
+  <% end %>
+<% end %>

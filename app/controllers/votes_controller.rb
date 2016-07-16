@@ -8,10 +8,4 @@ class VotesController < ApplicationController
       redirect_to request.referrer
     end
   end
-
-  def destroy
-    @vote = current_user.votes.find_by(comment_id: params[:comment_id])
-    @vote.destroy.down_vote unless @vote.nil?
-    redirect_to request.referrer
-  end
 end

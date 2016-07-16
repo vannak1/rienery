@@ -1,0 +1,19 @@
+<script>
+  /* script fix turbolinks not resizing hero-container */
+  var height = window.innerHeight;
+  $('.hero-container').height(height * .4);
+  $(document).ready(function(){
+    $('.hero-container').height(height * .4);
+  });
+</script>
+
+<div class="container bg-gradient hero-container">
+  <div class="row" >
+    <div class="col-md-6 col-md-offset-3 hero-sign_up font-white">
+      <h1 class="font-1">A School Anywhere.</h1>
+      <p class="font-2">A world-class education at your fingertips.  Free. Forever.</p>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary outline-white" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary outline-white-inverted" %>
+   </div>
+  </div>
+</div>

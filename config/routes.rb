@@ -9,11 +9,9 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :destroy]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
-
-  resources :test
   resources :users
 
-  root 'test#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

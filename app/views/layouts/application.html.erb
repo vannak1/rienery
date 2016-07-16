@@ -14,9 +14,33 @@
 </head>
 <body>
   <%= render "/layouts/nav" %>
-
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+      <% if message_type == "alert" %>
+        <% alert_class = "alert-danger" %>
+      <% else %>
+        <% alert_class = "alert-info" %>
+      <% end %>
+    <div id="flash" class="alert <%= alert_class %>"><%= message %></div>
+    <% end %>
+  </div>
   <%= yield %>
 
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+  /* script fix turbolinks not loading nav transition*/
+  $('ul.nav li.dropdown').hover(function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
+  }, function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(500);
+  });
+  $(document).ready(function(){
+    $('ul.nav li.dropdown').hover(function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
+    }, function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(500);
+    });
+  });
+</script>
 </html>

@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ #grad
+ {
+   display: inline-block;
+   height:100%;
+   width:100%;
+   background: #00000c;
+   background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
+   background-image: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
+   background-image: -webkit-linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
+   background-image: -moz-linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
+   background-image: -o-background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
+ }
+
+ #gradInfo
+ {
+   font-size:2em;
+   color:#fff;
+   text-align:center;
+   position: fixed;
+   height:20px;
+   width:500px;
+   top: 25%;
+   left: 50%;
+   margin-top: -100px;
+   margin-left: -250px;
+ }
+
+ #slider
+ {
+   width:75%;
+   margin-left:auto;
+   margin-right:auto;
+   position:fixed;
+   bottom: 30px;
+   left: 12%;
+ }

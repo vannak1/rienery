@@ -63,6 +63,6 @@ class DiscussionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:question)
+      params.require(:discussion).permit(:title, :content)
     end
 end

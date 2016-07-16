@@ -1,28 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset2">
-        <p>
-          <strong>Title:</strong>
-          <%= @lesson.title %>
-        </p>
-
-        <p>
-          <strong>Content:</strong>
+        <h4 class="font-1"><%= @lesson.title %></h4>
           <%= raw @lesson.content %>
-        </p>
-
-        <p>
-          <strong>Locked?:</strong>
-          <%= @lesson.locked? %>
-        </p>
-
-        <p>
-          <strong>Course:</strong>
-          <%= @lesson.course.title %>
-        </p>
-
-        <%= link_to 'Edit', edit_course_lesson_path(@course, @lesson) %> |
-        <%= link_to 'Back', course_lessons_path %>
+        <% if current_user.admin? %>
+        <%= link_to 'Edit', edit_course_lesson_path(@course, @lesson), class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to 'Back', course_lessons_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

@@ -40,7 +40,38 @@
         </tr>
       <% end %>
 
-      <%= link_to 'New Lesson', new_course_lesson_path(@course) %>
+
     </div>
   </div>
 </div>
+
+<div class="container">
+  <% if current_user.admin? %>
+    <h4><%= link_to 'New Lesson', new_course_lesson_path(@course) %></h4>
+  <% end %>
+</div>
+
+<% @lessons.each do |lesson| %>
+  <div class="container" style="padding-top: 10px;">
+    <div class="row">
+      <!-- begin course panels -->
+      <div class="col-md-9 bg-white">
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag("badge") %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= course.title %></h4>
+            <p><%= course.description %><p>
+              <%= link_to 'Show', [@course, lesson] %>
+              <% if current_user.admin? %>
+                | <%= link_to 'Edit', edit_course_lesson_path(@course, lesson) %> |
+                <%= link_to 'Destroy', [@course, lesson], method: :delete %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- end course panels -->
+    </div>
+  </div>
+<% end %>

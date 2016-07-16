@@ -9,21 +9,17 @@
 </div>
 <div class="container">
 <div class="row">
-    <div class="col-md-12 bg-white">
+    <div class="col-md-8">
+      <div class="padding bg-white root-main" >
                  <h4 class="font-1"><%= @course.title %></h4>
                  <hr>
                    <h4 class="font-3"><%= @course.description %></h4>
-
-                   <%= link_to 'New Lesson', new_course_lesson_path(@course) %> |
-                   <%= link_to 'Edit', edit_course_path(@course) %> |
-                   <%= link_to 'Back', courses_path %>
-               <br>
-
-
+      </div>
     </div>
 
-    <div class="col-md-12 bg-white">
-              <h4 class="font-1">Motivation</h4>
+    <div class="col-md-4 bg-white">
+      <div class="padding bg-white root-sidebar">
+            <h4 class="font-1">Motivation</h4>
               <div class="content well bg-white">
                 <blockquote>
                   <p class="quote font-3">The best preparation for tomorrow is doing your best today.
@@ -33,13 +29,13 @@
                   </footer>
                 <button class="btn btn-sharp" id="next">Motivate</button>
                </blockquote>
-              </div>
+          </div>
       </div>
     </div>
+  </div>
 </div>
 
-<%= @course.lessons.count != 0 %>
-<% if true %>
+<% if @course.lessons.count != 0 %>
   <div class="container">
     <h1 class="font-1">Lesson</h1>
   </div>
@@ -55,7 +51,7 @@
             </div>
             <div class="media-body">
               <h3 class="media-heading font-1"><%= lesson.title %></h3>
-              <p class="font-2"><%= link_to "Start Lesson", course_lesson_path(lesson) %><p>
+              <p class="font-2"><%= link_to "Start Lesson", [lesson.course, lesson] %><p>
             </div>
           </div>
         </div>
@@ -64,70 +60,14 @@
     </div>
   <% end %>
 <% end %>
-
-
-<div class="container">
-  <div class="row">
-    <!-- begin course panels -->
-    <div class="col-md-6 bg-white">
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <%= image_tag("badge") %>
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <p>Something this tex is going to talke about. asldfjasldfjasldkjfalskdfjklasdfjlkasjfklasjdfkj<p>
-        </div>
-      </div>
-    </div>
-    <!-- end course panels -->
-  </div>
-</div>
-
-<div class="container" style="padding-bottom: 20px;">
-  <div class="row">
-    <!-- begin course panels -->
-    <div class="col-md-6 bg-white">
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <%= image_tag("badge") %>
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <p>Something this tex is going to talke about. asldfjasldfjasldkjfalskdfjklasdfjlkasjfklasjdfkj<p>
-        </div>
-      </div>
-    </div>
-    <!-- end course panels -->
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <!-- begin course panels -->
-    <div class="col-md-6 bg-white">
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <%= image_tag("badge") %>
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <p>Something this tex is going to talke about. asldfjasldfjasldkjfalskdfjklasdfjlkasjfklasjdfkj<p>
-        </div>
-      </div>
-    </div>
-    <!-- end course panels -->
-  </div>
-</div>
-
 <!-- script to push new quotes into sidebar -->
 <script>
+  /* script fix turbolinks not resizing main and sidebar */
+  $('.root-main').height($('.root-sidebar').height());
+  $(document).ready(function(){
+    $('.root-main').height($('.root-sidebar').height());
+  });
+  /* quote script */
   var arr = [{
   quote: "Don't spend time beating on a wall, hoping to transform it into a door.",
   author: "Coco Chanel"

@@ -1,28 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a rails project for learn.co.  It's an educational platform that manages courses and lessons.  Students can enroll in courses and complete lessons.  When a student has a question, they can use the discussion feature.  Other users can answer the questions.  Answers have an upvote feature that allows other readers to vote for the best answers.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To get the app up and running:
+1) bundle
+2) rake db:migrate
+3) rake db: seed
+
+Admin login:
+1@mail.com 
+12345678
+
+Non-admin:
+2@mail.com
+12345678
+
+Google login enabled.  Gem Certified used to get SSL.

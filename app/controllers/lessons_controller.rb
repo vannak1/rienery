@@ -29,6 +29,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
+    @lesson = Lesson.find(params[:id])
   end
 
   # POST /lessons
